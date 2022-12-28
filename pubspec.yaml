@@ -37,6 +37,10 @@ dependencies:
   flutter_svg: ^1.1.6
   page_transition: ^2.0.9
   google_fonts: ^3.0.1
+  flutter_bloc: ^8.1.1
+  provider: ^6.0.5
+  path_provider: ^2.0.11
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

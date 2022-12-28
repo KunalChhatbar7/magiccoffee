@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:magiccoffee/Ui/Constans/app.dart';
 import 'package:magiccoffee/Ui/Constans/icons.dart';
 import 'package:magiccoffee/Ui/Constans/strings.dart';
+import 'package:magiccoffee/Ui/Screens/Auth/forgotpassword.dart';
 import 'package:magiccoffee/Ui/Screens/Auth/signup.dart';
+import 'package:magiccoffee/Ui/Screens/Home/home.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -54,7 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     height: height * 0.02,
                   ),
                   Text(
-                    StringsData().Welome,
+                    StringsData().Walcome,
                     style: AppData().regulterTextStyle(
                       FontSize: 14,
                       FontColor: AppColors().SubTextColor,
@@ -133,20 +135,21 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                         suffixIcon: Padding(
-                            padding: const EdgeInsets.all(14),
-                            child: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  obscureText = !obscureText;
-                                });
-                              },
-                              child: SvgPicture.asset(
-                                IconsData().ShowIcon,
-                                color: obscureText
-                                    ? AppColors().SubTextColor
-                                    : AppColors().AppMainColor,
-                              ),
-                            )),
+                          padding: const EdgeInsets.all(14),
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                obscureText = !obscureText;
+                              });
+                            },
+                            child: SvgPicture.asset(
+                              IconsData().ShowIcon,
+                              color: obscureText
+                                  ? AppColors().SubTextColor
+                                  : AppColors().AppMainColor,
+                            ),
+                          ),
+                        ),
                         hintText: StringsData().EnterPassword,
                         hintStyle: AppData().regulterTextStyle(
                             FontSize: 12, FontColor: AppColors().SubTextColor)),
@@ -155,6 +158,17 @@ class _SignInScreenState extends State<SignInScreen> {
                     height: height * 0.04,
                   ),
                   Center(
+                      child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          duration: const Duration(milliseconds: 200),
+                          child: const ForgotPassword(),
+                        ),
+                      );
+                    },
                     child: Text(
                       StringsData().ForgotPassword,
                       style: AppData().regulterTextStyle(
@@ -162,7 +176,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         Decoration: TextDecoration.underline,
                       ),
                     ),
-                  ),
+                  )),
                   SizedBox(
                     height: height * 0.16,
                   ),
@@ -174,11 +188,30 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: height * 0.08,
                         width: width * 0.22,
                         decoration: BoxDecoration(
-                          color: AppColors().AppMainColor,
                           shape: BoxShape.circle,
                         ),
-                        child: Center(
-                          child: SvgPicture.asset(IconsData().RightIcon),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                duration: const Duration(milliseconds: 200),
+                                child: const HomeScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: height * 0.08,
+                            width: width * 0.22,
+                            decoration: BoxDecoration(
+                              color: AppColors().AppMainColor,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(IconsData().RightIcon),
+                            ),
+                          ),
                         ),
                       )
                     ],
