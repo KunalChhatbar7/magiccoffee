@@ -14,7 +14,6 @@ class CoffeeListModel {
     ingredients = json['ingredients'].cast<String>();
     image = json['image'];
     id = json['id'].toString();
-
   }
 
   Map<String, dynamic> toJson() {
